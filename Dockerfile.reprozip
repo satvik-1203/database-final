@@ -1,0 +1,20 @@
+# Builder image with Node + Python + reprozip for tracing
+FROM node:20-bullseye
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    python3 python3-pip python3-dev gcc g++ make \
+    libsqlite3-dev libssl-dev libffi-dev \
+  && rm -rf /var/lib/apt/lists/*
+
+# Install pnpm and reprozip
+# Install npm (bundled) + reprozip
+RUN pip3 install --no-cache-dir reprozip
+
+WORKDIR /app
+
+# Default workdir is bind-mounted by the script; keep container alive with sh by default
+CMD ["bash"]
+
+

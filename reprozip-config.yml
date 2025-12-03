@@ -1,0 +1,32 @@
+# ReproZip manual configuration for the Distributed Transaction Simulator
+# This config describes how to run and which files to include when packing.
+# Usage (after installing reprozip in your venv): reprozip pack -c reprozip-config.yml simulator.rpz
+
+version: 1
+
+runs:
+  - id: default
+    argv:
+      - node
+      - dist/index.js
+      - tests/input99.txt
+    workingdir: .
+    envp:
+      - "PATH=/usr/local/bin:/usr/bin:/bin"
+      - "LANG=C.UTF-8"
+
+inputs:
+  - id: test_input
+    path: tests/input99.txt
+
+outputs: []
+
+other_files:
+  # Runtime app files
+  - dist/
+  - tests/
+  - package.json
+  - pnpm-lock.yaml
+  - tsconfig.json
+
+

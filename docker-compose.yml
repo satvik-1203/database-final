@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  # Main application service
+  db-simulator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: distributed-transaction-simulator:latest
+    container_name: db-simulator
+    volumes:
+      # Mount tests directory for easy access to test files
+      - ./tests:/app/tests:ro
+      # Mount a volume for custom input files
+      - ./custom-inputs:/app/custom-inputs:ro
+    command: --help
+
+  # Service to run all tests
+  test-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: distributed-transaction-simulator:latest
+    container_name: db-simulator-tests
+    volumes:
+      - ./tests:/app/tests:ro
+    entrypoint: ["node", "scripts/run-tests.mjs"]
+    command: []

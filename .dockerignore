@@ -1,0 +1,11 @@
+node_modules
+dist
+*.log
+.git
+.gitignore
+README.md
+PROJECT_SUMMARY.md
+USAGE.md
+QUICKREF.txt
+.DS_Store
+

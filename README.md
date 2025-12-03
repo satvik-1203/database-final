@@ -19,13 +19,13 @@ This TypeScript implementation simulates a distributed database system with:
 
 ## Features
 
-- ✅ Snapshot isolation for transactions
-- ✅ First-committer-wins conflict resolution
-- ✅ Serialization cycle detection
-- ✅ Site failure and recovery handling
-- ✅ Replicated variable management
-- ✅ Available copies algorithm
-- ✅ Read-only optimization for replicated variables
+- Snapshot isolation for transactions
+- First-committer-wins conflict resolution
+- Serialization cycle detection
+- Site failure and recovery handling
+- Replicated variable management
+- Available copies algorithm
+- Read-only optimization for replicated variables
 
 ## Data Model
 
